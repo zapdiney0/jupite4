@@ -14,7 +14,140 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          phone: string | null
+          role: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          role?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          phone?: string | null
+          role?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      shipment_status_history: {
+        Row: {
+          description: string | null
+          id: string
+          location: string | null
+          shipment_id: string
+          status: string
+          timestamp: string
+        }
+        Insert: {
+          description?: string | null
+          id?: string
+          location?: string | null
+          shipment_id: string
+          status: string
+          timestamp?: string
+        }
+        Update: {
+          description?: string | null
+          id?: string
+          location?: string | null
+          shipment_id?: string
+          status?: string
+          timestamp?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "shipment_status_history_shipment_id_fkey"
+            columns: ["shipment_id"]
+            isOneToOne: false
+            referencedRelation: "shipments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      shipments: {
+        Row: {
+          actual_delivery: string | null
+          created_at: string
+          destination_city: string
+          dimensions: string | null
+          estimated_delivery: string | null
+          id: string
+          origin_city: string
+          package_description: string | null
+          recipient_address: string
+          recipient_name: string
+          recipient_phone: string | null
+          sender_address: string
+          sender_name: string
+          sender_phone: string | null
+          service_type: string
+          shipping_cost: number | null
+          status: string
+          tracking_number: string
+          updated_at: string
+          weight: number | null
+        }
+        Insert: {
+          actual_delivery?: string | null
+          created_at?: string
+          destination_city: string
+          dimensions?: string | null
+          estimated_delivery?: string | null
+          id?: string
+          origin_city: string
+          package_description?: string | null
+          recipient_address: string
+          recipient_name: string
+          recipient_phone?: string | null
+          sender_address: string
+          sender_name: string
+          sender_phone?: string | null
+          service_type?: string
+          shipping_cost?: number | null
+          status?: string
+          tracking_number: string
+          updated_at?: string
+          weight?: number | null
+        }
+        Update: {
+          actual_delivery?: string | null
+          created_at?: string
+          destination_city?: string
+          dimensions?: string | null
+          estimated_delivery?: string | null
+          id?: string
+          origin_city?: string
+          package_description?: string | null
+          recipient_address?: string
+          recipient_name?: string
+          recipient_phone?: string | null
+          sender_address?: string
+          sender_name?: string
+          sender_phone?: string | null
+          service_type?: string
+          shipping_cost?: number | null
+          status?: string
+          tracking_number?: string
+          updated_at?: string
+          weight?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
